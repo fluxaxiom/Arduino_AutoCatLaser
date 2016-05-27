@@ -3,7 +3,7 @@
    This sketch runs one of 12 functions at random. The functions vary -
    The range restriction controls the extent of both servos in each direction, making it adjustable to the room.
    0 - 180 is the full range on a standard servo.
-   The warpSpeed variable is a divisor of the delay so lower value is slower, 1.0 is normal speed. 
+   The warpSpeed variable controls the speed. It is a divisor of the delay so lower value is slower, 1.0 is normal speed. 
 
    created Jan 2016
    by Frank Appio
@@ -61,10 +61,10 @@ void loop() {
     int randomSteps = random(1,4);
     int randomSteps2 = random(1,5);
     bool luck = random(0,2);
-    int circleXcenter = random(80,100);
-    int circleYcenter = random(80,100);
+    int circleXcenter = random(80,101);
+    int circleYcenter = random(80,101);
 
-    // Keep things in bounds
+    // Keep things in bounds - needed for the unrestricted functions or you will wind up on the ceiling.
     if (posX<rangeRestrictX[0] || posX>rangeRestrictX[1]) { 
       posX=rangeRestrictX[1]-rangeX/2;
       servoX.write(posX); }
@@ -281,7 +281,6 @@ void loop() {
 
 // Circle                    
       case 8: 
-                if (randomDelay%2) {
                 if (luck){
                 for (int rad = 5; rad < 20; rad++) {
                   for (int i = 0; i < 10; i++) {
@@ -292,7 +291,7 @@ void loop() {
                     servoY.write(posY);
                     delay(randomSteps2*5/warpSpeed); }}
                 }
-                else {   
+                else {
                 for (int rad = 20; rad > 5; rad--) {
                   for (int i = 10; i > 0; i--) {
                     angle = i*2*3.14/10;
@@ -301,7 +300,7 @@ void loop() {
                     servoX.write(posX);
                     servoY.write(posY);
                     delay(randomSteps2*5/warpSpeed); }}
-                }}   
+                }   
         break;
 
 // ZigZag
@@ -406,7 +405,7 @@ void loop() {
         
 // Cool
       case 11:    
-                if (!luck) {
+                if (luck) {
                   digitalWrite(laser,LOW);
                   delay(randomSteps2*1000/warpSpeed);
                 }
