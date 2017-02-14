@@ -14,17 +14,18 @@ You must place the AutoCatLaser folder inside your Arduino folder in order for i
 This code cycles randomly through 12 different functions designed to entice cats to play.
 
 Functions:
+
 Taunt 
-Wobble
-Scan
-Zip
-Boomerang
-Creep
-Squiggle
-Blink
-Circle
-ZigZag
-Chase
+Wobble 
+Scan 
+Zip 
+Boomerang 
+Creep 
+Squiggle 
+Blink 
+Circle 
+ZigZag 
+Chase 
 Hide
 
 
