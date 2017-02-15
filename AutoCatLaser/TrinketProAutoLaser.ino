@@ -7,6 +7,8 @@
 
    created Jan 2016
    by Frank Appio
+   http://fluxaxiom.com/
+   Feel free to modify or use as you wish
 */
 
 int rangeRestrictX[] {50,170}; 
@@ -18,7 +20,7 @@ float warpSpeed = 1.0;
 
 
 
-#include <Servo.h> 
+#include <Servo.h> // Using the standard Arduino servo library to keep things simple. 
 
 // Attach servos and laser
 Servo servoX; 
@@ -289,7 +291,7 @@ void loop() {
                     posY = circleYcenter + (sin(angle) * rad);     
                     servoX.write(posX);
                     servoY.write(posY);
-                    delay(randomSteps2*5/warpSpeed); }}
+                    delay(randomSteps2*6/warpSpeed); }}
                 }
                 else {
                 for (int rad = 20; rad > 5; rad--) {
@@ -299,7 +301,7 @@ void loop() {
                     posY = circleYcenter + (sin(angle) * rad);
                     servoX.write(posX);
                     servoY.write(posY);
-                    delay(randomSteps2*5/warpSpeed); }}
+                    delay(randomSteps2*6/warpSpeed); }}
                 }   
         break;
 
@@ -403,10 +405,10 @@ void loop() {
                 }
         break;
         
-// Cool
+// Hide
       case 11:    
                 if (luck) {
-                  digitalWrite(laser,LOW);
+                  digitalWrite(laser,LOW); // Laser off
                   delay(randomSteps2*1000/warpSpeed);
                 }
         break;
